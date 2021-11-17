@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Webview Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- <link rel="stylesheet" href="../assets/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+  <script type="text/javascript" src="../node_modules/androidjs/lib/androidjs.js"></script>
+</head>
+
+<style>
+  .app {
+    font-size: 30px;
+  }
+</style>
+
+<body>
+
+  <iframe id=navWindow src=""></iframe>
+
+  <!-- <script type="text/javascript" src="../assets/script.js"></script>
+  <script src="../assets/jquery-3.3.1.slim.min.js"></script>
+  <script src="../assets/popper.min.js"></script>
+  <script src="../assets/bootstrap.min.js"></script> -->
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+    }
+
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      z-index: 999999;
+    }
+  </style>
+  <script type="text/javascript">
+
+    console.log(app, window.android)
+    // const app = require('androidjs').app;
+    if (window.android) {
+      app.wifi.enable();
+    }
+
+    front.on("backlog", function (msg) {
+      console.warn("backlog", msg);
+    });
+
+    function navTo(addr) {
+      console.log("nav to ", addr);
+      // app.loadURL(addr);
+      document.getElementById("navWindow").setAttribute("src", addr);
+    }
+
+    front.on("navTo", navTo);
+
+    front.send("getCurrentAddr");
+
+    front.send("fsready", window.android ? app.getPath('userData') : '/home/tinmar/Dev/androidjsTst/appData')
+
+    front.send("appready", window.android ? app.getPath('appData') + "/myapp" : '/home/tinmar/Dev/androidjsTst/')
+
+
+    // const testAddr = "https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version"
+    // setTimeout(() => { navTo(testAddr) }, 3000);
+  </script>
+</body>
+
+</html>

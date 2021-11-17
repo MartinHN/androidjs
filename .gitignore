@@ -1,0 +1,6 @@
+node_modules/
+serverdist/
+dist/
+appData/
+public/data
+.idea

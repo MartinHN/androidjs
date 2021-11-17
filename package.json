@@ -1,0 +1,40 @@
+{
+    "version": "1.0.0",
+    "name": "lumestrio",
+    "app-name": "lumestrio",
+    "package-name": "lumestrio",
+    "project-type": "webview",
+    "icon": "./assets/icon/icon.png",
+    "dist-path": "./dist",
+    "permission": [
+        "android.permission.INTERNET",
+        "android.permission.BLUETOOTH",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CHANGE_WIFI_STATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE"
+    ],
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start:dev": "nodemon .",
+        "build": "androidjs build"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "androidjs": "^2.0.2",
+        "bonjour": "^3.5.0"
+    },
+    "project-name": "androidjsTst",
+    "theme": {
+        "fullScreen": true
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "appData/*",
+            "public/*"
+        ],
+        "delay": 2500
+    }
+}
