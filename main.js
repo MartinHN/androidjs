@@ -15,13 +15,13 @@ function navTo(a){
 	back.send("navTo",navInfo.addr)
 }
 
-const appConf = require('./serverdist/out/filePaths');
+const appConf = require('./serverdist/filePaths');
 
 
 
 back.on("fsready",(writablePath)=>{
 console.log("app ready",writablePath);
-const conf = require('./serverdist/out/config').default;
+const conf = require('./serverdist/config').default;
 appConf.setRWBasePath(writablePath)
 })
 
@@ -37,11 +37,12 @@ back.on('appready',(appPath)=>{
 	const viewdist = appPath+"/serverdist/view-dist"//file:///android_asset/myapp/";
 	appConf.setViewerHTMLBasePath(viewdist)
 
-	const mainServer = require('./serverdist/out/mainServer');
+	const mainServer = require('./serverdist/mainServer');
 	mainServer.startMainServer((conf)=>{
 		const addr = `http://0.0.0.0:${conf.serverPort}`;
 	console.log("going local", addr)
 	navTo(addr)
+	back.send("appLoaded");
 
 	})
 	

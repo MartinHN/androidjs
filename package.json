@@ -18,7 +18,8 @@
     "main": "main.js",
     "scripts": {
         "start:dev": "nodemon .",
-        "build": "androidjs build"
+        "build": "androidjs build",
+        "debug": "bash debug.sh"
     },
     "author": "",
     "license": "ISC",

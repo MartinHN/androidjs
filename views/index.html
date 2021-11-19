@@ -19,6 +19,17 @@
 
 <body>
 
+  <div id=loadingPage>
+    <span class=baner>
+      <div>Lumestrio </div>
+      <video poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="LOGOV"
+        alt="Logo Atelier ohm" preload="auto" autoplay="autoplay" loop="loop" muted="true" height="auto">
+        <source id="LOGOV" src="../assets/AtelierOhmlogo.mp4" alt="Logo Atelier ohm" preload="auto" autoplay="autoplay"
+          loop="loop" muted="true" height="auto">
+
+      </video>
+    </span>
+  </div>
   <iframe id=navWindow src=""></iframe>
 
   <!-- <script type="text/javascript" src="../assets/script.js"></script>
@@ -45,9 +56,42 @@
       overflow: hidden;
       z-index: 999999;
     }
+
+    #loadingPage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: black
+    }
+
+    #loadingPage .baner {
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 4rem;
+      text-align: center;
+      justify-content: space-evenly;
+
+      margin-left: auto;
+      margin-right: auto;
+      height: 100%;
+    }
+
+    /* #loadingPage img {
+      max-height: 32px
+    } */
   </style>
   <script type="text/javascript">
 
+    function showLoadingPage(b) {
+      document.getElementById("loadingPage").style.display = (b ? "block" : "none");
+      document.getElementById("navWindow").style.display = (b ? "none" : "block");
+    }
     console.log(app, window.android)
     // const app = require('androidjs').app;
     if (window.android) {
@@ -60,17 +104,20 @@
 
     function navTo(addr) {
       console.log("nav to ", addr);
+
       // app.loadURL(addr);
       document.getElementById("navWindow").setAttribute("src", addr);
     }
 
     front.on("navTo", navTo);
 
+    front.on("appLoaded", () => { showLoadingPage(false) });
+
     front.send("getCurrentAddr");
 
-    front.send("fsready", window.android ? app.getPath('userData') : '/home/tinmar/Dev/androidjsTst/appData')
+    front.send("fsready", window.android ? app.getPath('userData') : '/home/tinmar/Dev/raspestrio/androidjs/appData')
 
-    front.send("appready", window.android ? app.getPath('appData') + "/myapp" : '/home/tinmar/Dev/androidjsTst/')
+    front.send("appready", window.android ? app.getPath('appData') + "/myapp" : '/home/tinmar/Dev/raspestrio/androidjs/')
 
 
     // const testAddr = "https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version"
