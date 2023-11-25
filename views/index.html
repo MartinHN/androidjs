@@ -22,10 +22,8 @@
   <div id=loadingPage>
     <span class=baner>
       <div>Lumestrio </div>
-      <video poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="LOGOV"
-        alt="Logo Atelier ohm" preload="auto" autoplay="autoplay" loop="loop" muted="true" height="auto">
-        <source id="LOGOV" src="../assets/AtelierOhmlogo.mp4" alt="Logo Atelier ohm" preload="auto" autoplay="autoplay"
-          loop="loop" muted="true" height="auto">
+      <video poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="LOGOV" alt="Logo Atelier ohm" preload="auto" autoplay="autoplay" loop="loop" muted="true" height="auto">
+        <source id="LOGOV" src="../assets/AtelierOhmlogo.mp4" alt="Logo Atelier ohm" preload="auto" autoplay="autoplay" loop="loop" muted="true" height="auto">
 
       </video>
     </span>
@@ -87,18 +85,17 @@
     } */
   </style>
   <script type="text/javascript">
-
     function showLoadingPage(b) {
       document.getElementById("loadingPage").style.display = (b ? "block" : "none");
       document.getElementById("navWindow").style.display = (b ? "none" : "block");
     }
     console.log(app, window.android)
     // const app = require('androidjs').app;
-    if (window.android) {
-      app.wifi.enable();
-    }
+    // if (window.android) {
+    // app.wifi.enable();
+    // }
 
-    front.on("backlog", function (msg) {
+    front.on("backlog", function(msg) {
       console.warn("backlog", msg);
     });
 
@@ -111,17 +108,15 @@
 
     front.on("navTo", navTo);
 
-    front.on("appLoaded", () => { showLoadingPage(false) });
+    front.on("appLoaded", () => {
+    showLoadingPage(false)
+    });
 
     front.send("getCurrentAddr");
 
     front.send("fsready", window.android ? app.getPath('userData') : '/home/tinmar/Dev/raspestrio/androidjs/appData')
 
-    front.send("appready", window.android ? app.getPath('appData') + "/myapp" : '/home/tinmar/Dev/raspestrio/androidjs/')
-
-
-    // const testAddr = "https://nodejs.dev/learn/update-all-the-nodejs-dependencies-to-their-latest-version"
-    // setTimeout(() => { navTo(testAddr) }, 3000);
+    front.send("appready", window.android ? app.getPath('appData') + "/" : '/home/tinmar/Dev/raspestrio/androidjs/')
   </script>
 </body>
 

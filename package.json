@@ -18,14 +18,18 @@
     "main": "main.js",
     "scripts": {
         "start:dev": "nodemon .",
+        "updateSrv": "cd ../server && bash package.sh",
         "build": "androidjs build",
+        "installOnDevice": "bash installOnDevice.sh",
         "debug": "bash debug.sh"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "androidjs": "^2.0.2",
-        "bonjour": "^3.5.0"
+        "android": "^0.0.8",
+        "androidjs": "^2.0.6",
+        "bonjour": "^3.5.0",
+        "js": "^0.1.0"
     },
     "project-name": "androidjsTst",
     "theme": {

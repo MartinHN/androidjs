@@ -1,6 +1,7 @@
 node_modules/
 serverdist/
 dist/
+views/view-dist/
 appData/
 public/data
 .idea
